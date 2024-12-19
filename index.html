@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persona Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hub-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .persona {
+            position: relative;
+            height: 500px;
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .persona:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .persona .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+
+        .persona:hover .overlay {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .persona.adrian {
+            background: url('./adrian.webp') center/cover no-repeat;
+        }
+
+        .persona.eden {
+            background: url('./eden.webp') center/cover no-repeat;
+        }
+
+        .persona.narwhal {
+            background: url('https://via.placeholder.com/400x200?text=Narwhal') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="hub-container">
+        <div class="persona adrian" onclick="navigateTo('adrian')">
+            <div class="overlay">Adrian</div>
+        </div>
+        <div class="persona eden" onclick="navigateTo('eden')">
+            <div class="overlay">Eden</div>
+        </div>
+        <div class="persona narwhal" onclick="navigateTo('narwhal')">
+            <div class="overlay">Narwhal</div>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(persona) {
+            const url = `${persona}.example.com`;
+            window.location.href = `https://${url}`;
+        }
+    </script>
+</body>
+</html>
